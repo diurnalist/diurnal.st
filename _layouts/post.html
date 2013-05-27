@@ -1,0 +1,190 @@
+---
+layout: default
+---
+
+<article class="post indent {{ page.type }}">
+
+  <div class="post-options">
+  {% if page.handwriting %}
+    <input type="checkbox" id="toggle-handwriting"/>&nbsp;<label for="toggle-handwriting">Chicken-scratch</label>
+  {% endif %}
+  </div>
+
+  <header {% if page.hero %}class="hero-header {{ page.heroType }}"{% endif %}>
+    {% if page.hero %}
+    <img class="hero" src="/images/hero/{{ page.hero }}" />
+    {% endif %}
+    <h1 class="post-title"><a class="post-permalink" href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
+    <div class="publish-date">
+      {{ page.date | date_to_string }}
+    </div>
+  </header>
+
+  <div class="content">
+
+    {{ content }}
+
+  </div>
+
+  <footer>
+
+    <div id="related" class="post-group">
+      <h3>Related Posts</h3>
+      <ul class="post-list">
+        {% for post in site.related_posts limit:3 %}
+          <li class="related-post"><a href="{{ post.url }}">{{ post.title }}</a><span class="publish-date">{{ post.date | date_to_string }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'diurnalist',
+                disqus_url = 'http://' + window.location.host + '{{ page.url }}';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+  </footer>
+
+  {% if page.handwriting %}
+  <script type="text/javascript">
+  window.handwriting = (function() {
+
+    var images = [];
+
+    function getOnLoad(elem) {
+      var $elem = $(elem);
+
+      return function(event) {
+        var img = event.currentTarget;
+
+        $elem.css({
+          height: img.height + 'px',
+          'background-image': 'url(' + img.src + ')',
+          'background-repeat': 'no-repeat',
+          'text-indent': '-9999px',
+          'max-width': 'none'
+        });
+      };
+    }
+
+    function loadAndDisplay() {
+      var i = 0, image, cached;
+
+      for (; image = images[i++]; ) {
+        cached = new Image();
+        cached.onload = getOnLoad(image.elem);
+        cached.src = image.path;
+        image.cached = cached;
+      }
+    }
+
+    function reset() {
+      var i = 0, image;
+
+      for (; image = images[i++]; ) {
+        $(image.elem).css({
+          height: '',
+          'background-image': '',
+          'background-repeat': '',
+          'text-indent': '',
+          'max-width': ''
+        });
+      }
+    }
+
+    function load() {
+      // search for handwriting
+      var id = '{{ page.id }}',
+        imageFolder = id.substring(1).split('/').join('-'),
+        counters = {
+          section: 0,
+          p: 0
+        },
+        sectionHeaderTag = 'h2',
+        pTag = 'p';
+
+      function getImagePath(name) {
+        return '/images/' + imageFolder + '/' + name + '.png';
+      }
+
+      $('.content').children().each(function(elem) {
+        var nodeName = elem.nodeName.toLowerCase(),
+          $elem = $(elem),
+          imageName,
+          isHeader;
+
+        if (nodeName === sectionHeaderTag) {
+          isHeader = true;
+          counters.section ++;
+          counters.p = 0;
+        } else if (nodeName === pTag) {
+          counters.p ++;
+        }
+
+        imageName = 'p' + counters.section;
+        if (isHeader) {
+          imageName += '-header'
+        } else {
+          imageName += '-' + counters.p;
+        }
+
+        images.push({
+          elem: elem,
+          path: getImagePath(imageName)
+        });
+      });
+
+      images.push({
+        elem: $('.post-permalink').get(0),
+        path: getImagePath('title')
+      });
+
+      images.push({
+        elem: $('.publish-date').get(0),
+        path: getImagePath('date')
+      });
+
+      loadAndDisplay(images);
+    }
+
+    return {
+      load: load,
+      reset: reset
+    };
+
+  })();
+
+  // boot it up
+  ender.domReady(function() {
+
+    var checkbox = $('#toggle-handwriting').get(0),
+      hash = document.location.hash.substring(1);
+
+    checkbox.onchange = function(event) {
+      var on = event.currentTarget.checked;
+
+      handwriting[on ? 'load' : 'reset']();
+    };
+
+    if (hash === 'handwriting') {
+      handwriting.load();
+    }
+
+  });
+
+  </script>
+  {% endif %}
+
+</article>
