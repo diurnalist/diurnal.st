@@ -15,9 +15,11 @@
   <!-- Homepage CSS -->
   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
 
+  {% if site.typekit %}
   <!-- Typekit -->
-  <script type="text/javascript" src="http://use.typekit.com/rzi0pwr.js"></script>
+  <script type="text/javascript" src="http://use.typekit.com/{{ site.typekit }}.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  {% endif %}
 
   <!-- Page scripts -->
   <script type="text/javascript" src="/js/ender.min.js"></script>

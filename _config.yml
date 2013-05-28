@@ -3,7 +3,7 @@ auto:        false
 server:      false
 server_port: 4000
 baseurl:    /
-url: http://localhost:4000
+url: http://diurnal.st
 
 source:      .
 destination: ./_site
@@ -23,7 +23,7 @@ maruku:
   png_url:    /images/latex
 
 rdiscount:
-  extensions: []
+  extensions: [smart]
 
 kramdown:
   auto_ids: true,
@@ -40,6 +40,12 @@ kramdown:
     coderay_bold_every: 10
     coderay_css: style
 
-# Optionally can disable
-# diurnal.st = UA-38025103-1
+# Google Analytics
 googleAnalytics: UA-38025103-1
+
+# Disqus
+disqusShortName: diurnalist
+
+# Typekit
+#typekit: yzr7skt #dev
+typekit: rzi0pwr #prod

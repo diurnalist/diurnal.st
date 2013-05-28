@@ -278,7 +278,12 @@ p {
 	opacity: 0.5;
 }
 .post blockquote p {
-	font: 24px/28px "adobe-garamond-pro", Garamond, "Times New Roman", Georgia, serif;
+	font: 20px/30px "adobe-garamond-pro", Garamond, "Times New Roman", Georgia, serif;
+	font-style: italic;
+}
+.post blockquote em {
+	color: #444;
+	text-decoration: underline;
 }
 
 .post hr {
@@ -363,6 +368,12 @@ aside .profile-pic {
 
 aside#about {
 	top: 200px;
+}
+
+/* Overrides */
+
+.post.comic h2 {
+	margin-top: 1.0em;
 }
 
 .yellow {
@@ -582,7 +593,7 @@ aside#about {
 		padding-left: 40px
 	}
 	.post blockquote p {
-		font-size: 18px;
+		font-size: 16px;
 		line-height: 20px;
 	}
 
