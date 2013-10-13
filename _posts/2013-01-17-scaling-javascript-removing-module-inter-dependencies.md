@@ -1,6 +1,7 @@
 ---
 title: "Scaling Javascript: Removing Module Inter-dependencies"
 layout: post
+syntaxHighlighting: true
 ---
 
 Encapsulating functionality within independent modules is a must in any Javascript codebase. In an ideal world, all modules would be entirely self-contained, exposing ony a minimal amount of information to the outside world and containing no knowledge of how other modules operate. However, as all developers know, compromises often have to be made to satisfy product deadlines, details are missed, and architectures are never perfect. Since time is at a premium, developers must therefore rely on common solution patterns and learn to identify when to apply a known pattern to any given problem. Here, I propose one such pattern for the problem of inter-module dependencies.

@@ -3,74 +3,76 @@ layout: default
 ---
 
 <article id="about" class="solo indent">
-	<img class="profile-pic" src="http://www.gravatar.com/avatar/e00108cd6e10130a781cfabf81098445.png" />
+  <img class="profile-pic" src="http://www.gravatar.com/avatar/e00108cd6e10130a781cfabf81098445.png" />
 
-	<div class="section">
-		<h3 class="section-heading">Vitals</h3>
-		<ul class="stats">
-			<li><span class="entry-value">Jason Anderson</span><label>Name</label></li>
-			<li><span class="entry-value">None</span><label>Known Aliases</label></li>
-			<li><span class="entry-value">San Francisco, CA</span><label>Location</label></li>
-			<li><span class="entry-value">Male</span><label>Gender</label></li>
-			<li><span class="entry-value">6' 0"</span><label>Height</label></li>
-			<li><span class="entry-value">140 lbs</span><label>Weight</label></li>
-			<li><span class="entry-value">Slim</span><label>Build</label></li>
-			<li><span class="entry-value"><span class="age">25</span> Earth years</span><label>Age</label></li>
-	  </ul>
-	</div>
+  <div class="section">
+    <h3 class="section-heading">Vitals</h3>
+    <ul class="stats">
+      <li><span class="entry-value">Jason Anderson</span><label>Name</label></li>
+      <li><span class="entry-value">None</span><label>Known Aliases</label></li>
+      <li><span class="entry-value">San Francisco, CA</span><label>Location</label></li>
+      <li><span class="entry-value">Male</span><label>Gender</label></li>
+      <li><span class="entry-value">6' 0"</span><label>Height</label></li>
+      <li><span class="entry-value">140 lbs</span><label>Weight</label></li>
+      <li><span class="entry-value">Slim</span><label>Build</label></li>
+      <li><span class="entry-value"><span class="age">26</span> Earth years</span><label>Age</label></li>
+    </ul>
+  </div>
 
-	<div class="section">
-	  <h3 class="section-heading">Non-vitals</h3>
-	  <ul class="stats">
-	  		<li class="ttam"><span class="entry-value">Can Taste</span><label>Bitter Taste Perception</label></li>
-	  		<li class="ttam"><span class="entry-value">Likely Tolerant</span><label>Lactose Intolerance</label></li>
-	  		<li class="ttam"><span class="entry-value">Increased Odds</span><label>Male Pattern Baldness</label></li>
-			<li><span class="entry-value">INFJ</span><label><abbr title="Myers-Briggs Type Indicator">MBTI</abbr></label></li>
-			<li><span class="entry-value">Taurus</span><label>Astrological Sign</label></li>
-		</ul>
-	</div>
+  <div class="section">
+    <h3 class="section-heading">Non-vitals</h3>
+    <ul class="stats">
+      <li class="ttam"><span class="entry-value">Can Taste</span><label>Bitter Taste Perception</label></li>
+      <li class="ttam"><span class="entry-value">Likely Tolerant</span><label>Lactose Intolerance</label></li>
+      <li class="ttam"><span class="entry-value">Increased Odds</span><label>Male Pattern Baldness</label></li>
+      <li><span class="entry-value">INFJ</span><label><abbr title="Myers-Briggs Type Indicator">MBTI</abbr></label></li>
+      <li><span class="entry-value">Taurus</span><label>Astrological Sign</label></li>
+    </ul>
+  </div>
 
-	{% include about-sightings.html %}
+  {% include about-sightings.html %}
 
-	<footer>
+  <footer>
     <span class="yellow">*</span> Data proved by <a href="http://23andme.com" title="23AndMe">23AndMe</a>
-	</footer>
+  </footer>
 </article>
 
 <article id="bio" class="indent">
-	<p>I am a software engineer / designer currently located in San Francisco, CA.</p>
-	<p>I currently work for a company called <a href="http://bandpage.com">BandPage</a>.</p>
-	<p>I like to write and think about software and design and am a chronic doodler.</p>
-	<p>You will probably wonder why there is a link to my Github page on here, because I have never updated it.</p>
-	<p>You are a rare breed if you are still reading this, and I want you to know that I appreciate it.</p>
-	<p>We may not know each other yet, but I encourage you to get in touch with me if you want to speak more</p>
-	<p>We should grab drinks sometime.</p>
-	<p>We are not alone.</p>
-	<em class="byline"> &mdash; <a href="mailto:jason@diurnal.st">jason@diurnal.st</a></em>
+  <p>I am a software engineer / designer currently located in San Francisco, CA.</p>
+  <p>I currently work for a company called <a href="http://bandpage.com">BandPage</a>.</p>
+  <p>I like to write and think about software and design and am a chronic doodler.</p>
+  <p>You will probably wonder why there is a link to my Github page on here, because I have never updated it.</p>
+  <p>You are a rare breed if you are still reading this, and I want you to know that I appreciate it.</p>
+  <p>We may not know each other yet, but I encourage you to get in touch with me if you want to speak more</p>
+  <p>We should grab drinks sometime.</p>
+  <p>We are not alone.</p>
+  <em class="byline"> &mdash; <a href="mailto:jason@diurnal.st">jason@diurnal.st</a></em>
 </article>
 
 <script type="text/javascript">
 (function() {
-	var birthday = Date.parse('May 5, 1987 00:05:00 EST')
-	  , interval = 30
-	  , msInYear = parseFloat('3.1556926E10') // meh, close enough
-	  , precision = 7;
+  var birthday = Date.parse('May 5, 1987 00:05:00 EST')
+    , interval = 30
+    , msInYear = parseFloat('3.1556926E10') // meh, close enough
+    , precision = 7;
 
   function getYearDecimal(ms) {
-  	return ((ms  - birthday) / msInYear).toFixed(precision);
+    return ((ms  - birthday) / msInYear).toFixed(precision);
   }
 
-	$.domReady(function() {
-		function updateAge() {
-			var now = new Date()
-			  , years = getYearDecimal(now.getTime());
+  $.domReady(function() {
+    var $age
+      , updater;
 
-			 $age.text(years);
-	  }
+    function updateAge() {
+      var now = new Date()
+        , years = getYearDecimal(now.getTime());
 
-		var $age = $('.age')
-		  , updater = setInterval(updateAge, interval);
-	});
+      $age.text(years);
+    }
 
+    $age = $('.age');
+    updater = setInterval(updateAge, interval);
+  });
 })();
 </script>

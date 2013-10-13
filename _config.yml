@@ -31,7 +31,6 @@ kramdown:
   entity_output: as_char
   toc_levels: 1..6
   use_coderay: false
-  
   coderay:
     coderay_wrap: div
     coderay_line_numbers: inline
@@ -41,11 +40,11 @@ kramdown:
     coderay_css: style
 
 # Google Analytics
-googleAnalytics: UA-38025103-1
+# googleAnalytics: UA-38025103-1
 
 # Disqus
 disqusShortName: diurnalist
 
 # Typekit
-#typekit: yzr7skt #dev
-typekit: rzi0pwr #prod
+typekit: yzr7skt #dev
+#typekit: rzi0pwr #prod

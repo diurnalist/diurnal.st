@@ -493,6 +493,38 @@ aside#about {
 	text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 }
 
+.cv-experience {
+	margin-bottom: 3.0em;
+}
+
+.cv-experience ul > li {
+	font-size: 0.875em;
+	margin-bottom: 1.0em;
+}
+
+.cv-date-range {
+	float: right;
+}
+
+.cv-date-range,
+.cv-experience-achievements {
+	font-size: 0.875em;
+	text-transform: uppercase;
+	color: #B8B8B8;
+}
+
+.cv-skill {
+	float: left;
+	width: 25%;
+	min-width: 150px;
+	max-width: 300px;
+}
+
+.cv-experience-achievements {
+	margin-top: 0 !important;
+	letter-spacing: 2px;
+}
+
 /** Responsive **/
 
 @media only screen and (max-width: 1250px) {

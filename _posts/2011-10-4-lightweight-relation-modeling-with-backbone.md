@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Lightweight Relation Modeling with Backbone
+syntaxHighlighting: true
 ---
 
 I've been using Backbone.js more and more in my day-to-day development for a myriad of reasons. It's a wonderful balance of a light footprint and a set of powerful, flexible tools. One of the most frustrating things for me is when a framework prevents me from doing something... I don't know that I've had a case of that with Backbone so far. However, because Backbone is so trim and so new, developers have to solve a lot of novel challenges before being able to fully leverage the framework.
