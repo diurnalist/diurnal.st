@@ -7,4 +7,4 @@ docker run --rm \
   --volume="$PWD:/srv/jekyll" \
   --publish="4000:4000" \
   -it jekyll/minimal:$JEKYLL_VERSION \
-  jekyll build --destination "$dir"
+  jekyll serve --destination "$dir" "$@"
