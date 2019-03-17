@@ -54,22 +54,23 @@ html, body {
 }
 
 body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: sans-serif;
 	background-color: #fff;
-	font-family: "ff-meta-web-pro", Verdana, Arial, sans-serif;
 }
 
-/** General styles **/
+article,
+section {
+	margin-top: 1em;
+}
 
 a {
-	border-bottom: 2px solid #dedede;
-	color: #000;
 	text-decoration: none;
-	display: inline-block;
-	line-height: 18px;
-	margin-bottom: 2px;
 }
 a:hover {
-	border-color: #e3bd29;
+	text-decoration: underline;
 }
 
 strong {
@@ -77,123 +78,120 @@ strong {
 }
 
 p {
+	margin-top: 1em;
 	line-height: 1.5em;
-	margin-bottom: 1.5em;
 }
 
-/** Sidebar **/
+nav,
+h1, h2, h3 {
+	font-family: 'Crimson Text';
+}
 
-#sidebar {
-	-webkit-box-shadow: 1px 0 3px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 1px 0 3px rgba(0, 0, 0, 0.1);
-	background: #fff;
-	background: rgba(255, 255, 255, 0.9);
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 240px;
-	bottom: 0px;
-	z-index: 1;
+h1 {
+	font-size: 36px;
+}
+h2 {
+	font-size: 24px;
+}
+h3 {
+	font-size: 20px;
 }
 
 /** Main container **/
 
 #main {
-	background: #f9f8f7;
-	margin: 0 auto;
-	min-height: 100%;
-	max-width: 1060px;
-	position: relative;
-} #main > header {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-width: 540px;
+	max-width: 960px;
+}
+#main > header {
 	font-size: 24px;
-} #main > header a {
-	border: none;
-	color: #484848;
-	display: block;
-	text-decoration: none;
-	padding: 1.0em 0;
+}
+#main > footer {
+	font-size: 14px;
+	margin-bottom: 1.5em;
+}
+#main > .content {
+	flex: 1;
 }
 
-.right-rail {
-	position: fixed;
-	background: #f9f8f7;
-	top: 0px;
-	right: 0px;
-	left: 50%;
-	bottom: 0px;
-	z-index: -1;
+nav {
+	display: flex;
+	padding: .5em 0;
+	border-bottom: 2px solid #a5b5c5;
+	text-transform: lowercase;
 }
 
-#main .indent {
-	padding-left: 275px;
+nav > a {
+	display: inline-block;
+	margin-right: 2em;
 }
 
-#main nav {
-	overflow: hidden;
+.post-list li {
+	display: flex;
+	margin-bottom: .25em;
 }
-#main nav a {
-	display: block;
-	float: left;
-	letter-spacing: 1px;
-	margin-right: 50px;
-} #main nav a.page {
-	color: #E3BD29;
-	font-family: "adobe-garamond-pro", Garamond, "Times New Roman", Georgia, serif;
-	font-style: italic;
-	letter-spacing: 2px;
+.post-list li > .publish-date {
+	flex-basis: 100px;
+}
+.post-list li > a {
+	flex: 1;
 }
 
 /** Post styles **/
 
-.post {
-	color: #646464;
-	border-top: 1px solid #e6e5e4;
-	font-size: 16px;
-	position: relative;
+.post {}
+
+.post aside {
+	display: none;
+}
+
+.post h1,
+.post h2,
+.post h3 {
+	margin-top: 1em;
+}
+
+.post hr {
+	display: none;
+}
+
+.post p,
+.post aside,
+.post ul,
+.post ol {
+	max-width: 35em;
+}
+
+.post ol,
+.post ul {
+	margin-top: 1em;
 }
 
 .post ol {
 	counter-reset: li;
 }
-.post ol > li {
-	position: relative;
-	margin-left: 35px;
-}
 .post ol > li:before {
 	content: counter(li) ".";
 	counter-increment: li;
-	position: absolute;
-	left: -35px;
-	color: #E3BD29;
-	font-family: "adobe-garamond-pro", Garamond, "Times New Roman", Georgia, serif;
-	font-style: italic;
-	font-size: 1.4em;
-}
-
-.post ul > li {
-	position: relative;
-	margin-left: 20px;
-}
-.post ul > li:before {
-	content: " ";
-	position: absolute;
-	left: -20px;
-	top: 0.25em;
-	height: 1.0em;
-	border-left: 3px solid #E3BD29;
 }
 
 .post li {
-	line-height: 1.5em;
-	margin-bottom: 1.5em;
+	line-height: 1em;
+	margin-bottom: .25em;
+}
+
+.post footer {
+	margin-top: 1.5em;
+}
+.post .publish-date {
+	font-size: 12px;
 }
 
 .content img {
-	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-	background: white;
-	padding: 5px;
 	max-width: 100%;
 }
 .content img:after {
@@ -201,465 +199,22 @@ p {
 	font-size: 0.8em;
 }
 
-.film .content img {
-	-webkit-transition: margin-left 250ms ease-in-out, max-width 250ms ease-in-out;
-	-moz-transition: margin-left 250ms ease-in-out, max-width 250ms ease-in-out;
-	-webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-	max-width: 815px;
-	margin-left: -65px;
-	padding: 0;
-	position: relative;
-	z-index: 1;
-}
-
-.post header {
-	max-width: 750px;
-	padding-top: 35px;
-} .post-title {
-	margin: 0 0 15px;
-} .post-permalink {
-	border: none;
-	color: inherit;
-	display: block;
-	color: #3b3b3b;
-	font-size: 60px;
-	line-height: 65px;
-	font-weight: bolder;
-	letter-spacing: -1px;
-}
-.post .content {
-	padding: 25px 0;
-}
-
 .post i,
 .post em {
 	font-style: italic;
 }
 
-.post p,
-.post .comments,
-.post li {
-	max-width: 530px;
-	padding-right: 20px;
-}
 .post h2,
-.post h3,
-.post h4 {
-	max-width: 530px;
-	margin: 3.0em 0 1.0em;
-}
-.post h2 {
-	color: #e3bd29;
-	font-size: 20px;
+.post h3 {
 	font-weight: bolder;
-	letter-spacing: 1px;
-}
-.post h3,
-.post-group h3 {
-	font-weight: bolder;
-	letter-spacing: 1px;
-	margin: 0 0 1.0em;
-}
-
-.post blockquote {
-	margin-top: 30px;
-	padding: 15px 30px 15px 70px;
-	max-width: 430px;
-	position: relative;
-}
-.post blockquote:before {
-	content: "\201C";
-	font: 140px bolder "adobe-garamond-pro", Garamond, "Times New Roman", Georgia, serif;
-	color: #E3BD29;
-	position: absolute;
-	left: 0px;
-	top: -30px;
-	opacity: 0.5;
-}
-.post blockquote p {
-	font: 20px/30px "adobe-garamond-pro", Garamond, "Times New Roman", Georgia, serif;
-	font-style: italic;
-}
-.post blockquote em {
-	color: #444;
-	text-decoration: underline;
-}
-
-.post hr {
-	width: 100px;
-	margin: 50px 0 30px 215px;
-	border: 2px solid #E3BD29;
-	opacity: 0.5;
-}
-
-.post .comments {
-	border-top: 1px solid #e6e5e4;
-	margin-top: 3.0em;
-	padding-top: 1.0em;
 }
 
 .post .highlight {
 	overflow-x: scroll;
 }
 
-.post aside {
-	color: rgb(170,170,170);
-	left: -95px;
-	width: 250px;
-	font-weight: lighter;
-	line-height: 1.5em;
-} .post aside a {
-	display: inline;
-	line-height: inherit;
-}
+.publish-date {}
 
-.post-options {
-	position: absolute;
-	right: 30px;
-	top: -68px;
-	line-height: 68px;
-}
-
-.publish-date {
-	color: #e3bd29;
-	font-family: "adobe-garamond-pro", Garamond, "Times New Roman", Georgia, serif;
-	font-style: italic;
-	text-align: left;
-	text-shadow: 0 0 5px white;
-	text-transform: lowercase;
-	letter-spacing: 2px;
-	z-index: 1;
-}
-
-.post > .publish-date {
-	margin-top: 15px;
-}
-
-.post-list li {
-	margin-bottom: 0.75em;
-	position: relative;
-} .post-list .publish-date {
-	margin-left: 15px;
-}
-
-.profile-pic {
-	-webkit-border-radius: 40px;
-	-moz-border-radius: 40px;
-	width: 80px;
-	height: 80px;
-}
-
-aside {
-	font-size: 12px;
-	padding-left: 20px;
-	position: absolute;
-	left: 0px;
-	width: 180px;
-	z-index: 1;
-}
-aside p {
-	margin-bottom: 5px;
-}
-aside .profile-pic {
-	position: absolute;
-	right: -80px;
-}
-
-aside#about {
-	top: 200px;
-}
-
-/* Overrides */
-
-.post.comic h2 {
-	margin-top: 1.0em;
-}
-
-.yellow {
-	color: #e3bd29;
-}
-
-#about .section {
-	margin-bottom: 30px;
-}
-#about .section-heading {
-	font-family: "adobe-garamond-pro", Garamond, "Times New Roman", Georgia, serif;
-	font-size: 16px;
-	letter-spacing: 1px;
-	margin-bottom: 10px;
-}
-#about .stats li {
-	overflow: hidden;
-	margin-bottom: 10px;
-}
-#about .stats label {
-	color: #aaa;
-	display: block;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-size: 9px;
-	margin-top: 3px;
-}
-#about .stats .entry-value {
-	display: block;
-	text-align: left;
-	margin-right: 30px;
-	border-bottom: 1px solid #cdcdcd;
-}
-#about .sightings {
-	clear: left;
-}
-#about .sightings li {
-	content: "\00B7";
-}
-
-#about .stats .ttam label::after {
-	content: '*';
-	color: #e3bd29;
-}
-
-#about.solo {
-	float: left;
-	width: 530px;
-	position: relative;
-}
-
-#about.solo .section  {
-	float: left;
-	width: 50%;
-}
-
-#about.solo .profile-pic {
-	display: block;
-	margin-bottom: 2.0em;
-} #about.solo footer {
-	color: #888;
-	font-size: 12px;
-}
-
-#bio {
-	float: left;
-	max-width: 550px;
-	margin-top: 35px;
-	padding-right: 50px;
-}
-
-#main > footer {
-	clear: both;
-	color: #cccccc;
-	font-size: 10px;
-	padding-top: 25px;
-	padding-bottom: 25px;
-}
-
-.highlight {
-	font-family: 'ubuntu-mono', monospace;
-	padding: 1.0em 0 1.0em 35px;
-	margin: 0 0 1.5em -35px;
-	max-width: 750px;
-}
-
-.hero {
-	display: block;
-	width: 1020px;
-	margin-bottom: 50px;
-	position: relative;
-}
-
-.post .hero {
-	left: -200px;
-}
-
-.hero-header {
-	position: relative;
-	height: 265px;
-	margin: 0 -35px 0;
-	padding: 35px 35px 0;
-
-	background: black;
-} .hero-header .hero {
-	position: absolute;
-	top: 0px;
-	z-index: 0;
-	opacity: 0.7;
-}
-.hero-header .post-permalink,
-.hero-header .publish-date {
-	position: relative;
-	z-index: 1;
-
-	color: white;
-	text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
-}
-
-.cv-experience {
-	margin-bottom: 3.0em;
-}
-
-.cv-experience ul > li {
-	font-size: 0.875em;
-	margin-bottom: 1.0em;
-}
-
-.cv-date-range {
-	float: right;
-}
-
-.cv-date-range,
-.cv-experience-achievements {
-	font-size: 0.875em;
-	text-transform: uppercase;
-	color: #B8B8B8;
-}
-
-.cv-skill {
-	float: left;
-	width: 25%;
-	min-width: 150px;
-	max-width: 300px;
-}
-
-.cv-experience-achievements {
-	margin-top: 0 !important;
-	letter-spacing: 2px;
-}
+/** Overrides **/
 
 /** Responsive **/
-
-@media only screen and (max-width: 1250px) {
-	.post aside {
-		left: 0px;
-		width: 200px;
-		font-size: 10px;
-	}
-
-	.film .content img {
-		margin-left: -35px;
-	}
-}
-
-/* Smaller than standard 960 (devices and browsers) */
-@media only screen and (max-width: 959px) {}
-
-@media only screen and (max-width: 900px) {
-	.film .content img {
-		max-width: 100%;
-	}
-}
-
-/* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {}
-
-/* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 767px) {
-	#sidebar {
-		display: none;
-	}
-
-	#main .indent {
-		padding-left: 30px;
-	}
-
-	.post aside {
-		position: relative;
-		max-width: 530px;
-		width: auto;
-		left: 0px;
-		padding-left: 0px;
-		padding-right: 20px;
-	}
-
-	.film .content img {
-		margin-left: 0px;
-	}
-}
-
-/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {}
-
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px),
-	   only screen and (max-device-width: 479px) {
-
-	#main {
-		padding-left: 0;
-	}
-
-	#sidebar,
-	#right-sidebar,
-	#about:not(.solo) { display: none; }
-
-	#main > header {
-		font-size: 16px;
-	}
-
-	.hero {
-		height: auto;
-		width: 130%;
-		left: -15%;
-	}
-	.hero-header {
-		height: auto;
-		padding: 0;
-	} .hero-header .hero {
-		position: relative;
-		margin-bottom: 0;
-	}
-
-	.post-list a {
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		max-width: 90%;
-	}
-
-	.post {
-		font-size: 14px;
-	}
-
-	.post blockquote:before {
-		font-size: 80px;
-	}
-	.post blockquote {
-		padding-left: 40px
-	}
-	.post blockquote p {
-		font-size: 16px;
-		line-height: 20px;
-	}
-
-	.post hr {
-		margin: 30px auto;
-	}
-
-	.post-title {
-		position: absolute;
-		top: 20px;
-		left: 35px;
-	}
-
-	.post-permalink {
-		font-size: 24px;
-		line-height: 26px;
-	}
-
-	.post h2 {
-		font-size: 16px;
-	}
-
-	.post .highlight {
-		margin: 0 -25px 1.5em -30px;
-		padding: 1.0em 25px 1.0em 30px;
-	}
-
-	.publish-date {
-		padding: 10px 35px;
-	}
-
-	#bio {
-		padding-right: 30px;
-	}
-
-}

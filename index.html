@@ -2,26 +2,13 @@
 layout: default
 ---
 
-<aside id="about">
-	<div class="section stats">
-		<h3 class="section-heading">Specimen details</h3>
-		<ul class="stats">
-			<li><span class="entry-value">Jason Anderson</span><label>Name</label></li>
-			<li><span class="entry-value">Chicago, Illinois</span><label>Location</label></li>
-		</ul>
-	</div>
-
-	{% include about-sightings.html %}
-
-</aside>
-
-<img class="hero" src="/images/top_mural_space_1500x545.png" alt="space" />
-
-<div class="post-group indent">
-	<h3>Things with words in them</h3>
+<section>
 	<ol class="post-list">
 	{% for post in site.posts %}
-	  <li><a href="{{ post.url }}">{{ post.title }}</a><span class="publish-date">{{ post.date | date_to_string }}</span></li>
+		<li>
+			<span class="publish-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+			<a href="{{ post.url }}">{{ post.title }}</a>
+		</li>
 	{% endfor %}
 	</ol>
-</div>
+</section>

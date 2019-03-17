@@ -4,55 +4,22 @@ layout: default
 
 <article class="post indent {{ page.type }}">
 
-  <div class="post-options"></div>
-
-  <header {% if page.hero %}class="hero-header {{ page.heroType }}"{% endif %}>
-    {% if page.hero %}
-    <img class="hero" src="/images/hero/{{ page.hero }}" />
-    {% endif %}
-    <h1 class="post-title"><a class="post-permalink" href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
-    <div class="publish-date">
-      {{ page.date | date_to_string }}
-    </div>
+  <header>
+    <h1 class="post-title">
+      <a class="post-permalink" href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
+    </h1>
   </header>
 
-  <div class="content">
+  <section class="content">
 
     {{ content }}
 
-  </div>
+  </section>
 
   <footer>
-
-    <div id="related" class="post-group">
-      <h3>Related Posts</h3>
-      <ul class="post-list">
-        {% for post in site.related_posts limit:3 %}
-          <li class="related-post"><a href="{{ post.url }}">{{ post.title }}</a><span class="publish-date">{{ post.date | date_to_string }}</span></li>
-        {% endfor %}
-      </ul>
+    <div class="publish-date">
+      Originally published {{ page.date | date: '%Y.%m.%d' }}
     </div>
-
-    {% if site.disqusShortName %}
-    <div class="comments">
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = '{{ site.disqusShortName }}',
-                disqus_url = 'http://' + window.location.host + '{{ page.url }}';
-
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    </div>
-    {% endif %}
-
   </footer>
 
 </article>

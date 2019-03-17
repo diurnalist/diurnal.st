@@ -2,40 +2,7 @@
 layout: default
 ---
 
-<article id="about" class="solo indent">
-  <div class="section">
-    <h3 class="section-heading">Vitals</h3>
-    <ul class="stats">
-      <li><span class="entry-value">Jason Anderson</span><label>Name</label></li>
-      <li><span class="entry-value">None</span><label>Known Aliases</label></li>
-      <li><span class="entry-value">Chicago, Illinois</span><label>Location</label></li>
-      <li><span class="entry-value">Male</span><label>Gender</label></li>
-      <li><span class="entry-value">6' 0"</span><label>Height</label></li>
-      <li><span class="entry-value">140 lbs</span><label>Weight</label></li>
-      <li><span class="entry-value">Slim</span><label>Build</label></li>
-      <li><span class="entry-value"><span class="age">26</span> Earth years</span><label>Age</label></li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h3 class="section-heading">Non-vitals</h3>
-    <ul class="stats">
-      <li class="ttam"><span class="entry-value">Can Taste</span><label>Bitter Taste Perception</label></li>
-      <li class="ttam"><span class="entry-value">Likely Tolerant</span><label>Lactose Intolerance</label></li>
-      <li class="ttam"><span class="entry-value">Increased Odds</span><label>Male Pattern Baldness</label></li>
-      <li><span class="entry-value">INFJ</span><label><abbr title="Myers-Briggs Type Indicator">MBTI</abbr></label></li>
-      <li><span class="entry-value">Taurus</span><label>Astrological Sign</label></li>
-    </ul>
-  </div>
-
-  {% include about-sightings.html %}
-
-  <footer>
-    <span class="yellow">*</span> Data proved by <a href="http://23andme.com" title="23AndMe">23AndMe</a>
-  </footer>
-</article>
-
-<article id="bio" class="indent">
+<article id="bio">
   <p>I am a software engineer / designer currently located in Chicago, Illinois.</p>
   <p>I currently work on the <a href="https://www.chameleoncloud.org">Chameleon Cloud experimental testbed</a>. Previously I worked for <a href="https://soundcloud.com">SoundCloud</a>.</p>
   <p>I like to write and think about software and design and am a chronic doodler.</p>
@@ -44,31 +11,3 @@ layout: default
   <p>We should grab drinks sometime.</p>
   <p>We are not alone.</p>
 </article>
-
-<script type="text/javascript">
-(function() {
-  var birthday = Date.parse('May 5, 1987 00:05:00 EST')
-    , interval = 30
-    , msInYear = parseFloat('3.1556926E10') // meh, close enough
-    , precision = 7;
-
-  function getYearDecimal(ms) {
-    return ((ms  - birthday) / msInYear).toFixed(precision);
-  }
-
-  $.domReady(function() {
-    var $age
-      , updater;
-
-    function updateAge() {
-      var now = new Date()
-        , years = getYearDecimal(now.getTime());
-
-      $age.text(years);
-    }
-
-    $age = $('.age');
-    updater = setInterval(updateAge, interval);
-  });
-})();
-</script>

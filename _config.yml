@@ -5,12 +5,3 @@ safe: true
 exclude:
   - scripts
   - README.md
-
-# Google Analytics
-googleAnalytics: UA-38025103-1
-
-# Disqus
-disqusShortName: diurnalist
-
-# Typekit
-typekit: rzi0pwr
