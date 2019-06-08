@@ -132,7 +132,7 @@ nav > a {
 
 .post-list li {
 	display: flex;
-	margin-bottom: .25em;
+	margin-bottom: .5em;
 }
 .post-list li > .publish-date {
 	flex-basis: 6.5em;
