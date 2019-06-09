@@ -57,8 +57,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	font-family: sans-serif;
+	font-family: serif;
 	background-color: #fff;
+	min-height: 100vh;
 }
 
 article,
@@ -93,7 +94,9 @@ h1, h2, h3 {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
+}
+
+.content-wrap {
 	font-size: calc(12px + 1vw);
 	width: 35em;
 }
@@ -108,6 +111,9 @@ h1, h2, h3 {
 	font-size: calc(20px + 1vw);
 }
 
+#main > article {
+	padding-bottom: 3em;
+}
 #main > header {
 	font-size: 24px;
 }
@@ -117,6 +123,20 @@ h1, h2, h3 {
 }
 #main > .content {
 	flex: 1;
+}
+
+#footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	background: black;
+	color: white;
+	padding: .5em 0;
+}
+
+#footer small {
+	font-size: 14px;
 }
 
 nav {
@@ -219,12 +239,6 @@ nav > a {
 
 /** Responsive **/
 
-@media only screen and (max-width: 700px) {
-	#main {
-		width: 20em;
-	}
-}
-
 @media only screen and (max-width: 350px) {
 	body {
 		align-items: flex-start;
@@ -234,5 +248,28 @@ nav > a {
 	#main {
 		width: 15em;
 		min-width: 15em;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	#main {
+		width: 20em;
+	}
+}
+
+/* Prevent exceeding 18px base font-size */
+@media only screen and (min-width: 600px) {
+	.content-wrap {
+		font-size: 18px;
+	}
+
+	#main h1 {
+		font-size: calc(42px);
+	}
+	#main h2 {
+		font-size: calc(30px);
+	}
+	#main h3 {
+		font-size: calc(26px);
 	}
 }
