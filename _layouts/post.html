@@ -18,7 +18,10 @@ layout: default
 
   <footer>
     <div class="publish-date">
-      Originally published {{ page.date | date: '%Y.%m.%d' }}
+      Originally published {{ page.date | date: '%Y-%m-%d' }}.<br>
+      {% for update in page.updates %}
+      Updated ({{ update.date | date: '%Y-%m-%d' }}): {{ update.comment }}<br>
+      {% endfor %}
     </div>
   </footer>
 
