@@ -58,7 +58,8 @@ body {
 	flex-direction: column;
 	align-items: center;
 	font-family: serif;
-	background-color: #fff;
+	background-color: #eaea82;
+	color: #402020;
 	min-height: 100vh;
 }
 
@@ -73,6 +74,9 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+a, a:active {
+	color: #da004d;
+}
 
 strong {
 	font-weight: bolder;
@@ -85,7 +89,7 @@ p {
 
 nav,
 h1, h2, h3 {
-	/* font-family: 'Crimson Text'; */
+	color: #da004d;
 }
 
 /** Main container **/
@@ -130,8 +134,8 @@ h1, h2, h3 {
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	background: black;
-	color: white;
+	background-color: #000000;
+	color: #eaea82;
 	padding: .5em 0;
 }
 
