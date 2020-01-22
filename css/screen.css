@@ -126,27 +126,6 @@ h1, h2, h3 {
 	flex: 1;
 }
 
-.content > p:first-of-type {
-	margin-top: 3em;
-}
-
-.content img {
-	box-shadow: 1em -.5em 1em #fff;
-	margin-left: -10%;
-	margin-top: 1em;
-}
-
-.content sup {
-	font-size: 80%;
-	position: relative;
-	top: -.5em;
-}
-
-.content blockquote {
-	padding-left: 1em;
-	border-left: 0.5em solid #da004d08;
-}
-
 #footer {
 	display: flex;
 	flex-direction: column;
@@ -201,10 +180,6 @@ nav > a {
 	margin-top: 1em;
 }
 
-.post hr {
-	display: none;
-}
-
 .post p,
 .post aside,
 .post ul,
@@ -236,6 +211,36 @@ nav > a {
 .post .publish-date {
 	font-size: 12px;
 	line-height: 1.5em;
+}
+
+.post .content > p:first-of-type {
+	margin-top: 3em;
+	text-indent: 2em;
+}
+
+.post hr {
+	width: 33%;
+	height: 0.5em;
+	background: #da004d08;
+	border: 0;
+	margin: 1em auto 0;
+}
+
+.post img {
+	box-shadow: 1em -.5em 1em #fff;
+	margin-left: -10%;
+	margin-top: 1em;
+}
+
+.post sup {
+	font-size: 80%;
+	position: relative;
+	top: -.5em;
+}
+
+.post blockquote {
+	padding-left: 1em;
+	border-left: 0.5em solid #da004d08;
 }
 
 .content img {
