@@ -49,16 +49,12 @@ table {
 
 /** Site styles **/
 
-html, body {
-	height: 100%;
-}
-
 body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	font-family: serif;
-	background-color: #fff3ab;
+	font-family: 'PT Serif', serif;
+	background: linear-gradient(#fff3df 25em, #ffffef);
 	color: #402020;
 	min-height: 100vh;
 }
@@ -89,6 +85,7 @@ p {
 
 nav,
 h1, h2, h3 {
+	font-family: 'Rubik Mono One', serif;
 	color: #da004d;
 }
 
@@ -129,18 +126,43 @@ h1, h2, h3 {
 	flex: 1;
 }
 
+.content > p:first-of-type {
+	margin-top: 3em;
+}
+
+.content img {
+	box-shadow: 1em -.5em 1em #fff;
+	margin-left: -10%;
+	margin-top: 1em;
+}
+
+.content sup {
+	font-size: 80%;
+	position: relative;
+	top: -.5em;
+}
+
+.content blockquote {
+	padding-left: 1em;
+	border-left: 0.5em solid #da004d08;
+}
+
 #footer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
 	background-color: #000000;
-	color: #eaea82;
+	color: #da004d;
+	font-family: sans-serif;
 	padding: .5em 0;
 }
 
 #footer small {
-	font-size: 14px;
+	font-size: 12px;
+	font-weight: bolder;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
 }
 
 nav {
