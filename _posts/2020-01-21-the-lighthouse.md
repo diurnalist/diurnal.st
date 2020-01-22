@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Bad luck to kill a gull
-#published: false
 ---
 
 ### _The Lighthouse_ (2019)
@@ -12,7 +11,7 @@ In Robert Eggers' latest film _The Lighthouse_ both story and setting are stripp
 
 The wide theatrical release of _The Lighthouse_ was buoyed by press a certain kind of film attracts these days: a cycle of retellings of its origin story and laborious production---notably, the construction of an actual lighthouse on a piece of barren rock in Nova Scotia---as well as the various hijinks of its two leading men. Robert Pattinson claimed he punched himself in the face and drank mud before scenes. The film's legend preceeded it in a manner similar to Iñárritu's _The Revenant_, also infamous for its grueling on-location shooting, dogmatic realism, and debasement of its own star, DiCaprio. In both cases, the mechanics of the film's production arouse more fascination and accolades than the film itself, a trend that has recently found footing with films shot on an iPhone (_Unsane_), featuring non-actors (_American Honey_) or real-life relationships (_The Souvenir_), or utilizing CGI-assisted fur (_Cats_). The dual character of an unusual production choice is that it can both make an artistic statement more effective and serve as kindling for the ever-important "buzz" that can make a release critically (if not financially) successful. The danger is in the film being too fashionable for its own good.
 
-![](/images/2020-01-20-the-lighthouse/hero.jpg)
+![](/images/2020-01-21-the-lighthouse/hero.jpg)
 
 From the first moment in _The Lighthouse_, a few such unique aesthetic decisions with regards to the cinematography are clear: the film is in black and white, it's gritty, and it's in a narrow aspect ratio. Eggers used actual black and white film stock as opposed to applying such an effect in post-production, a decision that required incredible intensity of lighting to prevent underexposure. Combined with lenses designed in the 1910s and 1930s, the result is an effect that most viewers would simply describe as "old-looking". But one wonders if the utility of the approach extends beyond the generation of "did-you-know?"-style factoids. The modified aspect ratio certainly recalls productions of a long bygone era, and while it is used to some effect in sequences such as a close-cropped vertical boom shot up the length of the lighthouse's exterior, the constrained frame feels gimmicky, as they often do.
 
