@@ -3,6 +3,7 @@ title: "Making OpenID Keystone Federation Fancier"
 series: OpenStack Dev Stories
 layout: post
 toc: true
+published: false
 ---
 
 At [Chameleon](https://www.chameleoncloud.org), I help develop and operate a
