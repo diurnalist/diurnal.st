@@ -8,11 +8,16 @@ layout: default
     <h1 class="post-title">
       <a class="post-permalink" href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
     </h1>
+    {% if page.series %}
+    <h3 class="post-series-title">
+      {{ page.series }}
+    </h3>
+    {% endif %}
   </header>
 
   <section class="content">
 
-    {{ content }}
+    {{ content | toc }}
 
   </section>
 

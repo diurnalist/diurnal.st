@@ -84,7 +84,7 @@ p {
 }
 
 nav,
-h1, h2, h3 {
+h1, h2, h3, h4 {
 	font-family: 'Rubik Mono One', serif;
 	color: #da004d;
 }
@@ -110,6 +110,10 @@ h1, h2, h3 {
 }
 #main h3 {
 	font-size: calc(20px + 1vw);
+}
+#main h4 {
+	color: inherit;
+	font-size: calc(10px + 0.5vw);
 }
 
 #main > article {
@@ -176,7 +180,8 @@ nav > a {
 
 .post h1,
 .post h2,
-.post h3 {
+.post h3,
+.post h4 {
 	margin-top: 1em;
 }
 
@@ -195,9 +200,17 @@ nav > a {
 .post ol {
 	counter-reset: li;
 }
+.post ol > li {
+	display: flex;
+	line-height: 1.5em;
+}
 .post ol > li:before {
+	display: inline-block;
+	margin-right: 1rem;
 	content: counter(li) ".";
 	counter-increment: li;
+	font-weight: bold;
+	font-style: italic;
 }
 
 .post li {
@@ -265,7 +278,24 @@ nav > a {
 	overflow-x: scroll;
 }
 
+.post .highlight {
+	font-family: monospace;
+	font-size: 0.8em;
+	padding: 1rem;
+	margin: 2rem 0;
+}
+
 .publish-date {}
+
+.toc-h3 {
+	margin-left: 1rem;
+}
+.toc-entry {
+	margin-top: 0.5rem;
+}
+.toc-entry ul {
+	margin-top: 0;
+}
 
 /** Overrides **/
 

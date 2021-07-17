@@ -5,3 +5,9 @@ safe: true
 exclude:
   - scripts
   - README.md
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-toc
