@@ -213,6 +213,14 @@ nav > a {
 	font-style: italic;
 }
 
+.post ul {
+	list-style: disc;
+}
+.post ul > li {
+	line-height: 1.5em;
+	margin-left: 1.5em;
+}
+
 .post li {
 	line-height: 1em;
 	margin-bottom: .25em;
@@ -279,15 +287,19 @@ nav > a {
 }
 
 .post .highlight {
-	font-family: monospace;
-	font-size: 0.8em;
 	padding: 1rem;
 	margin: 2rem 0;
 }
 
+.post code {
+  font-family: monospace;
+	font-size: 0.8em;
+}
+
 .publish-date {}
 
-.toc-h3 {
+.toc-h3,
+.toc-h4 {
 	margin-left: 1rem;
 }
 .toc-entry {
