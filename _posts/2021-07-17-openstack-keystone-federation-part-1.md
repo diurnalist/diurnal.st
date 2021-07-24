@@ -875,7 +875,9 @@ to use the `v3oidcpassword` authentication type, which effectively implements su
 for the [OAuth2.0 Resource Owner Password
 Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-1.3.3); the user sets a
 password in Keycloak and that serves as their CLI password. Users can also opt to create
-Keystone application credentials if that works better for them.
+Keystone [application
+credentials](https://docs.openstack.org/keystone/latest/user/application_credentials.html)
+if that works better for them.
 
 We encouraged all users to migrate over to the new system over a period of about
 six months, which went pretty smoothly all things considered. To assist in the
@@ -907,4 +909,4 @@ changest.
 - [support mapping extra project fields](https://github.com/ChameleonCloud/keystone/commit/413db3f07)
 - [allow referencing nested fields in claim tokens](https://github.com/ChameleonCloud/keystone/commit/49cadcbca)
 - [allow filtering based on nested fields in claim tokens](https://github.com/ChameleonCloud/keystone/commit/f6bd00d0d)
-- [add "optional" flag to allow missing claims](https://github.com/ChameleonCloud/keystone/commit/278900739)
+- [add "optional" flag to allow missing claims](https://github.com/ChameleonCloud/keystone/commit/aadb144)
