@@ -350,15 +350,14 @@ the entire list of project names encoded as the name field:
 
 This turned out to be because not all mapping "targets" in Keystone's
 federation mapping could support the input being a list. When the input claim
-is a list, the desired behavior is to expand the list, mapping to N targets
+is a list, the desired behavior is to expand the list, mapping to _N_ targets
 instead of 1.
 
 The patch for this,
-[keystone/727891](https://review.opendev.org/c/openstack/keystone/+/727891),
-ended up a bit more complicated, because it also added the missing support for
-mapping multiple role names. We did not need support for mapping multiple roles,
-as all users just get the default "member" role on their projects, but it was
-simple enough to make it worthwhile to have the consistency.
+[keystone/727891](https://review.opendev.org/c/openstack/keystone/+/727891), also adds
+the missing support for mapping multiple roles. We did not need support for mapping
+multiple roles, as all users just get the default "member" role on their projects, but
+it was simple enough to include and makes the behavior more consistent.
 
 ### Auto-remove users
 
@@ -367,12 +366,13 @@ they are never removed from these projects if their claims change later! This
 was important to fix, because it meant that users would retain access to any
 of their past projects forever.
 
-[keystone/741785](https://review.opendev.org/c/openstack/keystone/+/741785) adds
-a new Keystone configuration setting `remove_dangling_assignments`, which is
-turned off by default to maintain old behavior. If turned on, however, users
-will be removed from any projects not matching their claims. This only applies
-to projects within the identity provider domain (so, any projects in other
-domains or the default domain will be untouched).
+[keystone/741785](https://review.opendev.org/c/openstack/keystone/+/741785) adds a new
+Keystone configuration setting `remove_dangling_assignments`, which is turned off by
+default to maintain old behavior. If turned on, however, users will be removed from any
+projects not matching their claims. This only applies to projects within the identity
+provider [domain](https://docs.openstack.org/security-guide/identity/domains.html), so,
+any projects in other domains or the default domain will be untouched (Keystone isolates
+users/projects into one domain per identity provider configured.)
 
 ### Rich claim objects
 
@@ -384,17 +384,16 @@ significantly more powerful.
 
 #### Motivation
 
-When users are logged in to the OpenStack GUI, in the top nav bar they have a
-project selector dropdown, which displays the name of the project. In Chameleon,
-all of our projects have immutable names--this is important because the names
-act as foreign keys, allowing projects to be matched up across cloud
-deployments. These names are however not very user-friendly: they look like a
-prefix followed by a set of 6 numbers. Users who are members of multiple
-projects very often get them confused. So, at some point we added support for
-displaying the project's "nickname" in this field; we stored the nickname as an
-additional extra field on the project entity (Keystone already supported this.)
-We then patched the GUI to show that field value if it was present. Users were
-glad to have it.
+When users are logged in to the OpenStack GUI, in the top nav bar they have a project
+selector dropdown, which displays the name of the project. In Chameleon, all of our
+projects have immutable names--this is important because the names act as foreign keys,
+allowing projects to be matched up across cloud deployments. These names are however not
+very user-friendly: they look like a prefix followed by a set of six numbers. Users who
+are members of multiple projects very often get them confused. So, at some point we
+allowed users to "nickname" their projects with text of their choice. We store this
+field as an extra field on the Keystone project (Keystone's API already supports this.)
+We then patched the GUI to show that field value if it was present instead of the
+project name. Users were happy.
 
 With federated projects being auto-provisioned, we had to somehow sneak that
 nickname field in there. We could have opted to periodically sync the nickname
@@ -424,15 +423,15 @@ this new reality.
 
 #### Parsing entire assertion as JSON
 
-Keystone delegates the authentication and authorization to some service sitting
-directly in front of Keystone. That service is responsible for doing all the
-handshakes and claim verification, before passing the claims to the Keystone
-wsgi handler. Keystone then sees those claims as environment variables or HTTP
-headers. For OpenID, the `mod_auth_openidc` Apache module is the recommended
-solution for this. Now, when using a richer claim structure, the first thing I
-noticed was that the claim wasn't being properly passed down to Keystone,
-because the Apache module couldn't understand how to parse and then re-serialize
-the claim; it was not expecting a nested JSON structure.
+Keystone delegates the federation protocol's authentication and authorization to some
+service sitting directly in front of Keystone. That service is responsible for doing all
+the handshakes and claim verification, before passing the claims to the Keystone wsgi
+handler. Keystone then sees those claims as environment variables or HTTP headers. For
+OpenID, the [`mod_auth_openidc`](https://github.com/zmartzone/mod_auth_openidc) Apache
+module is the recommended solution for this. Now, when using a richer claim structure,
+the first thing I noticed was that the claim wasn't being properly passed down to
+Keystone, because the Apache module couldn't understand how to parse and then
+re-serialize the claim; it was not expecting a nested JSON structure.
 
 The solution to this was to configure the module to just pass all the claims
 directly through to Keystone in a big JSON blob. This is possible by changing
@@ -456,7 +455,7 @@ into the mapping engine.
 
 #### Mapping "extra" properties
 
-Next, the "projects" mapper needed support for actually specifying this "extra"
+Next, the "projects" mapper needed support for actually specifying this extra
 metadata to set on the project when it was created. Another patch adds support
 for this in the mapping engine, allowing you to specify an "extra" field in a
 project mapper to set additional fields:
@@ -477,7 +476,7 @@ project mapper to set additional fields:
             {
               "name": "{1}",
               "extra": {
-                "extra-key": "extra-value",
+                "extra_key": "extra-value",
                 "extra_key2": "extra-value2"
               },
               "roles": {
@@ -505,10 +504,9 @@ values mapped from claims.
 
 #### Map fields over claim list items
 
-We're still missing the final piece: how to wire in our list of projects such
-that, for each item in the list, the "name" attribute of the project in the
-claim is mapped to the project name, while the "nickname" is mapped to an extra
-field?
+We're still missing the final piece: how to wire in our list of projects such that, for
+each project in the claim, the "name" attribute is mapped to the project name, while the
+"nickname" is mapped to an extra field?
 
 To solve this, I updated the mapping engine to support more types of token
 placeholders than just "{0}", "{1}", etc. The engine now can support tokens
@@ -581,9 +579,8 @@ the user experience and deal with a few less critical issues I encountered.
 
 We experimented with using nested Keycloak groups (and [fine grained admin
 permissions](https://www.keycloak.org/docs/latest/server_admin/index.html#_fine_grain_permissions))
-to model the idea of roles within a project: some users should be able to add
-and remove users, while others cannot. This meant that our Keycloak groups might
-look like this:
+to model the idea of roles within a project: some users should be able to add and remove
+users, while others cannot. This meant that our Keycloak groups might look like this:
 
 <!-- prettier-ignore -->
 {% highlight shell %}
@@ -623,17 +620,18 @@ support for regexes to these filters, so we could now do this:
 "remote": [
   {
     "type": "projects",
-    "blacklist": ".*-managers$",
+    "blacklist": [".*-managers$"],
     "regex": true
   }
 ]
 {% endhighlight %}
 
-This doesn't work yet though, because we added in those fancy rich claims, which
-have nested fields. I really wanted to tell the mapping, filter out any items in
-the "projects" claim, _if the "name" attribute on that item has a certain
-value_. So, I had to write another patch on top of this patch to be able to
-apply filters to nested fields. This part of the mapping now finally becomes:
+This doesn't work yet though, because we added in those fancy rich claims, which have
+nested fields! The filter assumes that claim will be a string or list of strings, and
+raises an exception. I really wanted to tell the mapping, filter out any items in the
+"projects" claim, _if the "name" attribute on that item has a certain value_. So, I had
+to write another patch to be able to apply filters to nested fields. This part of the
+mapping now finally becomes:
 
 <!-- prettier-ignore -->
 {% highlight json %}
@@ -641,9 +639,7 @@ apply filters to nested fields. This part of the mapping now finally becomes:
   {
     "type": "projects",
     "blacklist": {
-      "name": [
-        ".*-managers$"
-      ]
+      "name": [".*-managers$"]
     },
     "regex": true
   }
@@ -652,14 +648,13 @@ apply filters to nested fields. This part of the mapping now finally becomes:
 
 ### Loose constraints
 
-Another interesting thing that came up was how to deal with users who were not a
-member of any projects. Normally, this would cause the entire mapping (and thus
-the login) to fail, because it is assumed that there is at least one item in a
-list claim for the mapping to succeed. From our perspective though, it's totally
-fine to allow the user through, they just shouldn't be a member of any projects.
-OpenStack will disallow these users from doing anything without a project, but
-it at least gives us a chance to show a nicer error message to them, indicating
-they need to be added to a project or request to be added to one.
+Another interesting thing that came up was how to deal with users who were not a member
+of any projects. Normally, this would cause the entire mapping (and thus the login) to
+fail, because for a mapping to pass, all claims must be present and non-empty. From our
+perspective though, it's totally fine to allow the user through. OpenStack will disallow
+these users from doing anything without a project, but it at least gives us a chance to
+show a nicer error message to them, indicating they need to be added to a project or
+request to be added to one.
 
 The simplest fix was to add the idea of "optional" claims. If a claim is marked
 optional, then the mapping can still pass even if the claim is undefined or
@@ -683,19 +678,21 @@ empty. We can then allow the "projects" list to be empty like so:
 
 ### OpenID provider discovery
 
+We use the wonderful [Kolla Ansible](https://docs.openstack.org/kolla-ansible/latest/)
+to deploy and configure our OpenStack clouds.
 [kolla-ansible/695432](https://review.opendev.org/c/openstack/kolla-ansible/+/695432)
-added support for configuring all the relevant bits and bobs for OpenID
-federation if you're using Kolla Ansible to manage your OpenStack deployment!
-In doing so, it configures `mod_auth_openidc` for _multiple_ OpenID providers.
-The reason for this is that it's feasible that a cloud deployer would configure
-multiple identity providers in Keystone. When `mod_auth_openidc` is set up this
-way, though, it will take all login requests through an additional interstitial
-page, which asks the user to confirm which configured OP they want to use.
+added support for configuring all the relevant bits and bobs for OpenID federation,
+which eliminates much of the burden in setting all this up. However, Kolla Ansible's
+implementation configures `mod_auth_openidc` for _multiple_ OpenID providers. The reason
+for this is that it's feasible that a cloud deployer would configure multiple identity
+providers in Keystone. When `mod_auth_openidc` is set up this way, though, it will take
+all login requests through an additional interstitial page, which asks the user to
+confirm which configured OP they want to use.
 
-This is redundant and unnecessary, as Keystone already allows the user to select
-which IdP they want to use. We can bypass this by implementing [OpenID Connect
-Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) and then
-setting the
+This is redundant and unnecessary, as Keystone already allows the user to select which
+IdP they want to use. We can bypass this by implementing [OpenID Connect
+Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) and then setting
+the
 [`OIDCDiscoverURL`](https://github.com/zmartzone/mod_auth_openidc/blob/276bdafdb241bd88cb1069035df79e23ef4a0ada/auth_openidc.conf#L653-L665)
 configuration option:
 
@@ -717,15 +714,14 @@ OIDCDiscoverURL <discovery-url>
 {% endhighlight %}
 <!-- prettier-ignore-end -->
 
-I wrote a patch to add a new Keystone endpoint hanging off of the same prefix
-as the rest of the federation endpoints. It is responsible for redirecting
-to the callback URL and setting the pre-selected identity provider parameters
-such as "iss". This is possible because the discover endpoint will receive
-the `target_link_uri` parameter, which will be a Keystone OpenID URI, and
-will therefore contain the name of the Keystone identity provider in the path.
-So we can be a bit tricky and use this to look up the value for "iss". With
-this in-place in Keystone, `mod_auth_openidc` can use OP discovery and the user
-no longer sees that awkward extra page in the flow.
+I wrote a patch to add a new Keystone endpoint hanging off of the same prefix as the
+rest of the federation endpoints. It is responsible for redirecting to the callback URL
+and setting the pre-selected identity provider parameters such as "iss". This is
+possible because the discover endpoint will receive the `target_link_uri` parameter,
+which will be a Keystone OpenID URI, which helpfully contains the name of the Keystone
+identity provider in the path. So we can be a bit tricky and use this to look up the
+value for "iss". With this in-place in Keystone, `mod_auth_openidc` can use OP discovery
+and the user no longer sees that awkward extra page in the flow.
 
 ### Limited OIDC support for rich claims
 
@@ -749,26 +745,26 @@ of "projects", we now have "project_names":
 
 But wait, there's more...
 
-This change had larger implications because of some capabilities our JupyterHub
-system has. When we built out JupyterHub, we wanted Hub users to be able to
-transparently interact with the remote OpenStack sites without having to do any
-wrangling of OpenRC files or logging in again to each site. Fortunately with
-federated authentication we can piggy-back on the user's initial login token:
-the keystoneauth library supports an authentication method called
-`v3oidcaccesstoken`, which allows passing an already-generated OIDC access token
-straight to Keystone, rather than Keystone attempting to obtain this itself.
+This change had larger implications because of some capabilities our JupyterHub system
+has. We wanted our JupyterHub users to be able to transparently interact with the remote
+OpenStack sites without having to do any wrangling of OpenRC files or logging in again
+to each site. With federated authentication this is possible because we can piggy-back
+on the token JupyterHub receives when the user performs their login: the
+[keystoneauth](https://github.com/openstack/keystoneauth) library supports an
+authentication method called `v3oidcaccesstoken`, which allows passing an
+already-generated OIDC access token straight to Keystone, rather than Keystone
+attempting to obtain this itself.
 
-However, this means whatever claims the client received _when it performed the
-login_ will be passed to Keystone (they are encoded in the token). Since
-OAuthenticator could only accept simple claims, it would be sending those simple
-claims back to Keystone, which would reject them, because the mapping was
-expecting the rich "projects" claim!
+However, this means whatever claims JupyterHub received from the IdP will be then passed
+to Keystone, because they are encoded in this token! Since OAuthenticator could only
+accept simple claims, it would be sending those simple claims back to Keystone, which
+would reject them, because the mapping was expecting the rich "projects" claim.
 
-Rather than try to fork yet another project and patch it up the root problem
-here, I opted to give Keystone _two_ mappings: a preferred one, which uses the
-rich claims, and a "dumb" one that it can fall back to. Keystone's mapping
-engine will apply the first mapping that successfully passes, so we just put the
-new simpler mapping after it. You can see the final mapping(s) below.
+Instead of addressing this directly in OAuthenticator, I opted to give Keystone _two_
+mappings: a preferred one, which uses the rich claims, and a "dumb" one that it can fall
+back to. Keystone's mapping engine will apply the first mapping that successfully
+passes, so we just put the new simpler mapping after it. You can see the final
+mapping(s) below.
 
 ## The final picture
 
@@ -863,22 +859,23 @@ configured looks something like this:
 ]
 {% endhighlight %}
 
-We now had a login system for all of our OpenStack deployments, and it was
-generic: every Keystone system could be configured exactly the same (just
-changing the Keycloak client ID and secret). This is particularly powerful
-because we have open-sourced Chameleon's provisioning code so that other host
-institutions or labs can deploy our specific infrastructure. Login with
-federated identity is now included by default, so any deployer of Chameleon
-doesn't need to worry about it.
+We now had a login system for all of our OpenStack deployments, and it was generic:
+every Keystone system could be configured exactly the same (just changing the Keycloak
+client ID and secret). This is particularly powerful because we have [open-sourced
+Chameleon's provisioning code](https://github.com/ChameleonCloud/chi-in-a-box) so that
+other host institutions or labs can deploy our specific infrastructure. Login with
+federated identity is now included by default, so any deployer of Chameleon doesn't need
+to worry about it.
 
-When a user logs in to any site, their project memberships are synced
-immediately. They will lose access to any projects they were removed from and
-will gain access to projects they were added to since the last login. They can
-still use CLI: the simplest thing we found was to override the default OpenRC
-template in Horizon to properly configure it to use the `v3oidcpassword`
-authentication type; the user sets a password in Keycloak and that serves as
-their CLI password. Users can also opt to create Keystone application
-credentials if that works better for them.
+When a user logs in to any site, their project memberships are synced immediately. They
+will lose access to any projects they were removed from and will gain access to projects
+they were added to since the last login. They can still use the CLI: the simplest thing
+we found was to override the default OpenRC template in Horizon to properly configure it
+to use the `v3oidcpassword` authentication type, which effectively implements support
+for the [OAuth2.0 Resource Owner Password
+Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-1.3.3); the user sets a
+password in Keycloak and that serves as their CLI password. Users can also opt to create
+Keystone application credentials if that works better for them.
 
 We encouraged all users to migrate over to the new system over a period of about
 six months, which went pretty smoothly all things considered. To assist in the
