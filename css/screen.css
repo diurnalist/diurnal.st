@@ -282,11 +282,8 @@ nav > a {
 	font-weight: bolder;
 }
 
-.post .highlight {
+.post pre.highlight {
 	overflow-x: scroll;
-}
-
-.post .highlight {
 	padding: 1rem;
 	margin: 2rem 0;
 }
