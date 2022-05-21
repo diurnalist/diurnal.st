@@ -85,7 +85,7 @@ p {
 
 nav,
 h1, h2, h3, h4 {
-	font-family: 'Rubik Mono One', serif;
+	font-family: 'Bebas Neue', sans-serif;
 	color: #da004d;
 }
 
@@ -106,14 +106,14 @@ h1, h2, h3, h4 {
 	font-size: calc(36px + 1vw);
 }
 #main h2 {
-	font-size: calc(24px + 1vw);
+	font-size: calc(36px + 1vw);
 }
 #main h3 {
-	font-size: calc(20px + 1vw);
+	font-size: calc(24px + 1vw);
 }
 #main h4 {
 	color: inherit;
-	font-size: calc(10px + 0.5vw);
+	font-size: calc(18px + 0.5vw);
 }
 
 #main > article {
@@ -217,8 +217,8 @@ nav > a {
 	list-style: disc;
 }
 .post ul > li {
-	line-height: 1.5em;
-	margin-left: 1.5em;
+	line-height: 1.5rem;
+	margin-left: 1rem;
 }
 
 .post li {
@@ -282,10 +282,10 @@ nav > a {
 	font-weight: bolder;
 }
 
-.post pre.highlight {
+.post .highlight {
 	overflow-x: scroll;
-	padding: 1rem;
-	margin: 2rem 0;
+	padding: .5rem 1rem;
+	margin-top: 1rem;
 }
 
 .post code {
@@ -295,12 +295,19 @@ nav > a {
 
 .publish-date {}
 
+#toc, #toc ul {
+  list-style: none;
+} #toc > .toc-entry {
+  margin-left: 0;
+}
+
 .toc-h3,
 .toc-h4 {
 	margin-left: 1rem;
 }
 .toc-entry {
 	margin-top: 0.5rem;
+	margin-left: 0;
 }
 .toc-entry ul {
 	margin-top: 0;
