@@ -156,7 +156,6 @@ nav {
 
 nav > a {
 	display: inline-block;
-	margin-right: 2em;
 }
 
 .post-list li {
@@ -311,6 +310,14 @@ nav > a {
 }
 .toc-entry ul {
 	margin-top: 0;
+}
+
+.cv-experience h3 {
+	display: flex;
+} .cv-experience h3 a {
+	flex: 1;
+} .cv-experience h3+h4 {
+	margin-top: .5rem;
 }
 
 /** Overrides **/

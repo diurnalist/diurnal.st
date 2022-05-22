@@ -4,49 +4,114 @@ title: CV
 ---
 
 <article id="cv" class="post indent">
-
   <div class="section">
-    <h2>Summary</h2>
     <p>
-      After four years working up and down the stack at SoundCloud, I’m keen to find new challenges that will really engage my knowledge and extensive experience. Ideally, I would like to continue working in infrastructure and network security, but I’d also be keen to focus more on systems architecture if the right opportunity came along.
+      I love figuring out how to help others work more efficiently. This can take many
+      forms: better abstractions, automation, introducing new infrastructure, or
+      re-expressing existing infrastructure as a composition of well-understood systems.
+      I have worked on a wide variety of systems and serve as a leader and/or mentor for
+      my teams. I am now looking for a role where I can force-multiply my experience at
+      a larger scale.
     </p>
   </div>
 
   <div class="section">
     <h2>Experience</h2>
-    <p>
-      Joining SoundCloud as a Web Engineer, I was the first member of the Core Web team responsible for helping scale the complexity of SoundCloud's web applications. Work for this team introduced me to Scala, and I soon moved in to a backend role and helped both with building microservices from the ground-up and maintaining legacy code. I decided to eventually transition to the security team to follow my passion for the challenges in that field.
-    </p>
-
     <div class="cv-experience">
-      <h3><a href="https://soundcloud.com" rel="nofollow">SoundCloud</a> <span class="cv-date-range">May 2014 - Present</span></h3>
-      <h4 class="cv-experience-achievements">Contributions</h4>
-      <p>Presently I am working on deploying LDAP across the SoundCloud infrastructure. Over time I have volunteered for several internal projects across many teams and areas.</li>
+      <h3>
+        <a href="https://www.chameleoncloud.org" rel="nofollow">Chameleon Cloud</a>
+        <span class="cv-date-range">2018 - 2022</span>
+      </h3>
+      <h4>Development and Operations Lead</h4>
+      <p>
+        I was responsible for organizing all development and operations contributions
+        from staff located in multiple facilities; functionally, this role "steers the
+        ship" of a mid-scale research cyberinfrastructure, working closely with the PI
+        (Principal Investigator).
+      </p>
       <ul>
-        <li>Architected and built ELK-based log ingestion and analysis pipeline with a focus on syscall auditing across SoundCloud's entire infrastructure.</li>
-        <li>Worked with IT team to rewrite and redeploy on-premises infrastructure to AWS using Terraform.</li>
-        <li>Spear-headed large-scale GitHub org policy changes to reduce risk of credential compromise. Introduced automation to detect and enforce security policies.</li>
-        <li>Triaged and managed responsible disclosure program, developed policies for AWS credential management, and automated various IT and Security daily tasks (such as blocking malicious traffic sources, on and offboarding users, and generating dashboards to deep-dive into alerts.)</li>
-        <li>Leveled up infrastructure and org security by enforcing HTTPS on legacy services and implementing SPF, DKIM, and DMARC on mailing domains.</li>
-        <li>Created automation to deploy staging environments of soundcloud.com on every GitHub pull request.</li>
-        <li>Completed wide-scale refactor of <a href="http://samnewman.io/patterns/architectural/bff/" rel="nofollow" title="Backend For Frontend">BFF</a> for the web clients in order to make it easier and safer for teams to submit patches (and hopefully more fun to work with, too.)</li>
-        <li>Deployed private NPM registry and generalized many common web-specific libraries into reusable NPM modules.</li>
-        <li>Created Selenium test suite infrastructure for running automated acceptance tests on soundcloud.com.</li>
-        <li>Built microservices to support a self-service experience for creators on SoundCloud to join the monetization program, including legal contract generation and storage and ISRC (unique musical recording identification numbers for global rightsholder audit trail) generation.</li>
+        <li>
+          Delivered novel testbed platform for edge/IoT research by extending existing
+          OpenStack and Kubernetes components. MVP in 5 months (design and
+          implementation.)
+        </li>
+        <li>
+          Developed open-source packaging of Chameleon systems, monitoring, and
+          operational knowledge (e.g., runbooks, docs), reducing the complexity of
+          deploying a bare metal research testbed to a new host institution.
+        </li>
+        <li>
+          Migrated infrastructure to federated identity, improving onboarding UX for
+          users while decoupling IAM concerns from existing applications. This made it
+          feasible to scale the number of Chameleon deployments nationwide.
+        </li>
+        <li>
+          Developed, maintained, and extended the cloud computing control plane that
+          powers six installations of Chameleon, providing clusters of KVM, bare metal
+          and edge/IoT resources. Worked on a daily basis w/ a wide variety of tools
+          and technologies across systems, networking, and storage.
+        </li>
+      </ul>
+    </div>
+    <div class="cv-experience">
+      <h3>
+        <a href="https://soundcloud.com" rel="nofollow">SoundCloud</a>
+        <span class="cv-date-range">2014 - 2018</span>
+      </h3>
+      <h4>Tech Lead (Security, User Auth, Anti-Abuse and Corp IT)</h4>
+      <ul>
+        <li>
+          Identified and mitigated organizational risk in multiple areas (e.g.,
+          application security, network security, abuse, insider threat.) Ask me more!
+        </li>
+        <li>
+          Built Terraform framework for IT to migrate on-premises systems to AWS.
+        </li>
+        <li>
+          Transitioned in-house responsible disclosure program to Bugcrowd, which led to
+          more and higher-quality reports.
+        </li>
+      </ul>
+      <h4>Senior Engineer, Backend</h4>
+      <ul>
+        <li>
+          Designed microservice architecture that allowed creators to sign up to
+          receive compensation for their streams.
+        </li>
+      </ul>
+      <h4>Senior Engineer, Web</h4>
+      <ul>
+        <li>
+          Enabled tighter feedback loop between product and engineering by automating
+          staging releases for every GitHub pull request.
+        </li>
+        <li>
+          Removed sources of tech debt by migrating the in-house application bundler to
+          Webpack and introducing a private NPM registry of core libraries, improving
+          code-reuse across web properties.
+        </li>
       </ul>
     </div>
 
     <div class="cv-experience">
-      <h3><a href="https://bandpage.com" rel="nofollow">BandPage</a> <span class="cv-date-range">Nov 2009 - May 2014</span></h3>
-      <h4 class="cv-experience-achievements">Contributions</h4>
-      <p>
-        As sole designer and frontend engineer, I designed and implemented foundations of the BandPage product and later became the Frontend Technical Team Lead.
-      </p>
+      <h3>
+        <a href="https://bandpage.com" rel="nofollow">BandPage</a>
+        <span class="cv-date-range">2009 - 2014</span>
+      </h3>
+      <h4>Frontend Team Lead</h4>
       <ul>
-        <li>Architected custom Javascript UI framework to allow frontend team to meet needs in scalable code and fast iteration. Framework drove close to 100% of all BandPage user interfaces.</li>
-        <li>Guided team through several major refactorings of a large Javascript codebase in a targeted manner.</li>
-        <li>Wrote and expanded on core Javascript libraries used in all aspects of BandPage's single-page app, including persistence, routing, UI rendering and data management.</li>
-        <li>Implemented entire frontend stack for initial product, which supported over 20 million monthly active users on Facebook.</li>
+        <li>
+          Implemented frontend stack for initial product, which supported over 20
+          million monthly active users on Facebook.
+        </li>
+        <li>
+          Architected custom Javascript UI framework to allow team to meet needs in
+          scalable code and fast iteration, handling persistence, routing, rendering and
+          data management.
+        </li>
+        <li>
+          Guided team through several major refactorings of a large codebase.
+        </li>
       </ul>
     </div>
   </div>
@@ -55,7 +120,11 @@ title: CV
     <h2>Education</h2>
 
     <div class="cv-experience">
-      <h3>B.S. Computer Science, Washington University in St. Louis <span class="cv-date-range">2005-2009</span></h3>
+      <h3>
+        <a href="https://wustl.edu" rel="nofollow">Washington University in St. Louis</a>
+        <span class="cv-date-range">2005 - 2009</span>
+      </h3>
+      <h4>B.S. Computer Science</h4>
     </div>
   </div>
 
