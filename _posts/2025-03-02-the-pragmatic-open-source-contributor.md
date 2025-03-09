@@ -45,7 +45,7 @@ I have never seen this argument fail given enough motivation, but I’m sure the
 ---
 The following steps assume that you have identified some contribution you’d like to make to an open source project for your own purposes. Maybe you’re fixing a bug you found when applying the code to your specific use-case, or are extending the feature set to make it *possible* to apply to your use-case.
 
-## Step 1: Get the lay of the land
+### Step 1: Get the lay of the land
 I see developers often skip this step and go straight to submitting a patch. This can lead to frustration for both you and the maintainers. Doing a quick check of any defined contribution process and putting yourself in the maintainers’ shoes often prevents these issues.
 
 **What is the contribution process?** Do you need to sign a CLA first? Are pull requests welcome on the repo? Can you find examples of contributions from the outside? How did the maintainers respond to the contribution request? Anything you can learn from this?
