@@ -4,19 +4,19 @@ layout: post
 toc: true
 ---
 
-I sometimes have the feeling that salaried programmers shy away from fixing or extending open source code, due to some combination of the following:
+I sometimes have the feeling that salaried programmers shy away from fixing or extending open source code due to some combination of the following:
 * They don’t think it’s part of their job.
-* Their *company* doesn’t think it’s part of their job, and/or does not have the necessary legal infrastructure and will.
-* They have been burned by non-responsive maintainers and/or worry about their timelines depending on any external parties.
-* They are worried about the time committment of shepherding a patch through the process.
+* Their *employer* doesn’t think it’s part of their job, and/or does not have the necessary legal infrastructure and will.
+* They’ve been frustrated in the past with rejected or ignored patch requests.
+* They are worried about the time committment for the entire process.
 
 These are understandable barriers that I would like to break down. More broadly speaking, I have two aims for this guide.
 
-First, **I hope to encourage you to take a more active role in fostering the shared knowledge that open source software represents.** Especially if you work in larger-scale environments or are early-adopters of promising new technologies, you have a great opportunity to spot issues and areas of improvement that can benefit everyone.
+First, **I hope to encourage you to take a more active role in fostering the shared knowledge that open source software represents.** Especially if you work in larger-scale environments or are early adopters of promising new technologies, you have a great opportunity to spot issues and areas of improvement that can benefit everyone.
 
 Second, **I aim to provide a playbook for how to successfully do this kind of work** and set expectations for what you can expect and what will be expected of you. [I have made contributions to many projects over the years](https://github.com/pulls?page=1&q=is%3Apr+author%3Adiurnalist+archived%3Afalse+is%3Aclosed+is%3Apublic+-org%3Achameleoncloud+-org%3Adiurnalist+-org%3Akpireporter), generally following a pattern of identifying some code that solves 95% of my problem and contributing the 5% delta back. I’ve also worked more extensively in a single open source community, [OpenStack](https://review.opendev.org/q/status:close+owner:jasonanderson@uchicago.edu), where public contributions and distributed coordination are the status quo.
 ## The Pragmatic Contributor
-[How to Contribute to Open Source: Why Contribute?](https://opensource.guide/how-to-contribute/#why-contribute-to-opensource-) succinctly summarizes the benefits of contributing back to open source projects. Still, I find that these guides frame this process as ultimately an **individualistic** one, where the emphasis is personal development, a sense of fulfillment, etc. For the pragmatic contributor, one motivation trumps all: the drive to **improve software you rely on**. You want to fix a tool that isn’t enabling you to do the best job you can.
+[How to Contribute to Open Source: Why Contribute?](https://opensource.guide/how-to-contribute/#why-contribute-to-open-source) succinctly summarizes the benefits of contributing back to open source projects. Still, I find that these guides frame this process as ultimately an **individualistic** one, where the emphasis is personal development, a sense of fulfillment, etc. For the pragmatic contributor, one motivation trumps all: the drive to **improve software you rely on**. You want to fix a tool that isn’t enabling you to do the best job you can.
 
 Here are some general rules to live by.
 
@@ -109,10 +109,10 @@ Let’s revisit some of the reasons I hypothesized prevent folks from contributi
 
 **They don’t think it’s part of their job.** Hopefully I’ve made a brief but decent case for the *why* this is important, both for the wider community, and for your own growth. Familiarity and confidence in this process empowers you to blast through technical barriers, as you might no longer be “blocked” from achieving your goals due to some underlying third-party code not supporting XYZ.
 
-**Their *company* think it’s part of their job, and/or does not have the necessary legal infrastructure and will.** Step 0 describes ways you can try to make the case for contributions. Ultimately this may still be a barrier in practice, but I think it’s worth poking at assumptions here. Sometimes you can be surprised by how open-minded your employer is about work like this.
+**Their *employer* think it’s part of their job, and/or does not have the necessary legal infrastructure and will.** Step 0 describes ways you can try to make the case for contributions. Ultimately this may still be a barrier in practice, but I think it’s worth poking at assumptions here. Sometimes you can be surprised by how open-minded your employer is about work like this.
 
-**They have been burned by non-responsive maintainers and/or worry about their timelines depending on any external parties.** Steps 1 and 2 should put you in a better position to at worst set your own expectations, and at best improve the timelines by having better relationships with folks you’re dependent on.
+**They’ve been frustrated in the past with rejected or ignored patch requests.** Steps 1 and 2 should put you in a better position to at worst set your own expectations, and at best improve the timelines by having better relationships with folks you’re dependent on.
 
-**They are worried about the time committment of shepherding a patch through the process.** This is the wisest objection to the whole endeavor, in my opinion. It’s hopefully clear that writing the code is a very small part of this entire process. Still, I do find that this gets easier the more experience you have doing it, because you know more about how to keep the ball rolling, and if you’re working within the same ecosystem, over time you should gain more trust from the maintainers, which helps greatly with future contributions.
+**They are worried about the time committment for the entire process.** This is the wisest objection to the whole endeavor, in my opinion. It’s hopefully clear that writing the code is a very small part of this entire process. Still, I do find that this gets easier the more experience you have doing it, because you know more about how to keep the ball rolling, and if you’re working within the same ecosystem, over time you should gain more trust from the maintainers, which helps greatly with future contributions.
 
 > Write the change you want to see in the world!
