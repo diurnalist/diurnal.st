@@ -1,6 +1,7 @@
 ---
 title: "The Pragmatic Open Source Contributor"
 layout: post
+toc: true
 ---
 
 I sometimes have the feeling that salaried programmers shy away from fixing or extending open source code, due to some combination of the following:
