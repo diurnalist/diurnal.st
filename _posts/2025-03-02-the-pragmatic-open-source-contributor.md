@@ -40,9 +40,6 @@ This can be a bit of an uphill battle, but in my experience it is mostly a battl
 
 I have never seen this argument fail given enough motivation, but I’m sure there are exceptions. One thing to remember is you’re not arguing for **actually** doing the work or estimating the time commitment or return on investment; you’re making a case for the **option**. You should however be prepared to give concrete examples of the type of contributions you might make.
 
----
-The following steps assume that you have identified some contribution you’d like to make to an open source project for your own purposes. Maybe you’re fixing a bug you found when applying the code to your specific use-case, or are extending the feature set to make it *possible* to apply to your use-case.
-
 ### Step 1: Get the lay of the land
 I see developers often skip this step and go straight to submitting a patch. This can lead to frustration for both you and the maintainers. Doing a quick check of any defined contribution process and putting yourself in the maintainers’ shoes often prevents these issues.
 
